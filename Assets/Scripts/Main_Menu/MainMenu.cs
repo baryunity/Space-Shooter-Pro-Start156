@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
 {
     public void LoadGame()
     {
-        print("LoadGame 1"); 
+        print("LoadGame 1");
         SceneManager.LoadScene(1);      // Game Scene
         print("LoadGame 22");
     }

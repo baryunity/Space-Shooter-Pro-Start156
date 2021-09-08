@@ -828,7 +828,7 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1.25
   m_Text: Created by                     Bary W Pollack           Vulcan Systems         
-    v0.1 2021.09.07
+    v0.1 2021.09.08
 --- !u!222 &1267262954
 CanvasRenderer:
   m_ObjectHideFlags: 0

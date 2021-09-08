@@ -8,9 +8,9 @@ public class MainMenu : MonoBehaviour
 {
     public void LoadGame()
     {
-        print("LoadGame 11");
+        print("LoadGame 1");
         SceneManager.LoadScene(1);      // Game Scene
-        print("LoadGame 222");
+        print("LoadGame 2");
 
         //string compName = "";
         //compName = EditorGUILayout.TextField("Company Name:", compName);

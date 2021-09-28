@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public bool isPlayerOne = false;
+    public bool isPlayerTwo = false;
+
     [SerializeField]
     private float _speed = 3.5f;
     [SerializeField]
@@ -18,6 +21,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int _lives = 3;
     private SpawnManager _spawnManager;
+    private GameManager _gameManager;
 
     private bool _isTripleShotActive = false;
     private bool _isSpeedBoostActive = false;
@@ -40,20 +44,20 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        transform.position = new Vector3(0, -1.85f, 0);
         _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
+        _gameManager = GameObject.Find("Game_Manager").GetComponent<GameManager>();
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         _audioSource = GetComponent<AudioSource>();
 
         if (_spawnManager == null)
-        {
             Debug.LogError("The Spawn Manager is NULL");
-        }
+
+        if (_gameManager == null)
+            Debug.LogError("The Game Manager is NULL");
 
         if (_uiManager == null)
-        {
             Debug.LogError("The UI Manager is NULL");
-        }
+
         if (_audioSource == null)
         {
             Debug.LogError("The Audio Source on the Player is NULL");
@@ -61,6 +65,10 @@ public class Player : MonoBehaviour
         else
         {
             _audioSource.clip = _laserSoundClip;
+        }
+
+        if (!_gameManager.isCoopMode) {
+            transform.position = new Vector3(0, -1.85f, 0);
         }
     }
 

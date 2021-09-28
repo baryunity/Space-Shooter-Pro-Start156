@@ -48,9 +48,9 @@ public class SpawnManager : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(3, 8));
         }
     }
-
     public void OnPlayerDeath()
     {
         _stopSpawning = true;
     }
+
 }

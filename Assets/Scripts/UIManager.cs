@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-
     [SerializeField]
     private Text _scoreText;
     [SerializeField]
@@ -19,8 +18,6 @@ public class UIManager : MonoBehaviour
 
     private GameManager _gameManager;
 
-    //private GameManager _gameManager;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -29,9 +26,7 @@ public class UIManager : MonoBehaviour
         _gameManager = GameObject.Find("Game_Manager").GetComponent<GameManager>();
 
         if (_gameManager == null)
-        {
             Debug.LogError("GameManager is NULL");
-        }
     }
 
     // Update is called once per frame
@@ -42,6 +37,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateLives(int currentLives)
     {
+        print("Player lives = " + currentLives);
         _LivesImg.sprite = _liveSprites[currentLives];
 
         if (currentLives == 0)

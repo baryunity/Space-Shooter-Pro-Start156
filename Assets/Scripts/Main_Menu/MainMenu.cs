@@ -24,4 +24,5 @@ public class MainMenu : MonoBehaviour
         print("Co-Op Mode Loading...");
         SceneManager.LoadScene(2);      // Co-Op Mode Game Scene
     }
+
 }

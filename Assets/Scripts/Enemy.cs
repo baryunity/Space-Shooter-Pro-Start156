@@ -2,20 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
     private float _speed = 4f;
 
-    private Player _player;
+    private Player _player = null;
     private Animator _anim;
     private AudioSource _audioSource;
 
     void Start()
     {
-        _player = GameObject.Find("Player").GetComponent<Player>();
-        _audioSource = GetComponent<AudioSource>();
+        GameManager gm = GameObject.Find("Game_Manager").GetComponent<GameManager>();
+        print("Coop Mode = " + gm.getCoopMode());
+
+        if (!gm.getCoopMode())
+        {
+            _player = GameObject.Find("Player").GetComponent<Player>();
+            if (_player != null) print("Found Player");
+        }
+        else
+        {
+            if (_player == null)
+            {
+                _player = GameObject.Find("Player_1").GetComponent<Player>();
+                if (_player != null) print("Found Player_1");
+            }
+            if (_player == null)
+            {
+                _player = GameObject.Find("Player_2").GetComponent<Player>();
+                if (_player != null) print("Found Player_2");
+            }
+        }
 
         if (_player == null)
         {

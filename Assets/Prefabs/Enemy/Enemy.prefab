@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7700501846979347040}
   - component: {fileID: 719860157798997790}
   - component: {fileID: 8283101509758977772}
-  - component: {fileID: 2817704789540973840}
+  - component: {fileID: 4750312241005013591}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 4
+  footsteps: {fileID: 8300000, guid: a885c043fab7e46438bba03ba9dab6bc, type: 3}
 --- !u!212 &51133693233657331
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -165,7 +166,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!82 &2817704789540973840
+--- !u!82 &4750312241005013591
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

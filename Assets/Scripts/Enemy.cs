@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        print("Enemy.cs: Start()");     //FOO
+
         GameManager gm = GameObject.Find("Game_Manager").GetComponent<GameManager>();
         print("Coop Mode = " + gm.getCoopMode());
 
@@ -45,6 +47,12 @@ public class Enemy : MonoBehaviour
         {
             Debug.LogError("Animator is NULL");
         }
+
+        if (_audioSource == null)
+        {
+            Debug.LogWarning("Audio Source is NULL. Should have been set in Enemy Game Object");
+            _audioSource = GetComponent<AudioSource>();
+        }
     }
 
     void Update()
@@ -57,6 +65,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public AudioClip footsteps;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")

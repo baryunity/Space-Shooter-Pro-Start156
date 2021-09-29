@@ -74,10 +74,20 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        CalculateMovement();
+        if (isPlayerOne)
+        {
+            CalculateMovement();
 
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
-            FireLaser();
+            if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
+                FireLaser();
+        }
+
+        if (isPlayerTwo)
+        {
+            PlayerTwoMovement();
+            if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
+                FireLaser();
+        }
     }
 
     void CalculateMovement()
@@ -102,9 +112,49 @@ public class Player : MonoBehaviour
         {
             transform.position = new Vector3(11.3f, transform.position.y, 0);
         }
+    }    
+    
+    void PlayerTwoMovement()
+    {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        ///  3:38 seconds
+
+        Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
+
+        transform.Translate(_speed * Time.deltaTime * direction);
+
+        // Constrain vertical motion
+        transform.position = new Vector3(transform.position.x,
+                                Mathf.Clamp(transform.position.y, -3.8f, 0));
+
+        // Wrap horizontal motion
+        if (transform.position.x >= 11.3f)
+        {
+            transform.position = new Vector3(-11.3f, transform.position.y, 0);
+        }
+        else if (transform.position.x <= -11.3f)
+        {
+            transform.position = new Vector3(11.3f, transform.position.y, 0);
+        }
     }
 
     void FireLaser()
+    {
+        _canFire = Time.time + _fireRate;
+        if (_isTripleShotActive)
+        {
+            Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
+        }
+        else
+        {
+            Instantiate(_laserPrefab, transform.position + new Vector3(0, 1.05f, 0), Quaternion.identity);
+        }
+        _audioSource.Play();
+    }    
+    
+    void FireLaserPlayerTwo()
     {
         _canFire = Time.time + _fireRate;
         if (_isTripleShotActive)

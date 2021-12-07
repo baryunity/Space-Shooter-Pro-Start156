@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R) && _isGameOver)
         {
-            SceneManager.LoadScene(1);      // Current Game Scene ("Game" = 1)
+            SceneManager.LoadScene(0);      // Current Game Scene ("Game" = 1)
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))

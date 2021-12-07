@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        print("2021 12 07 - 1515");
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         if (_uiManager == null)
             Debug.LogError("GameManager: UIManager is NULL");
@@ -25,11 +26,12 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R) && _isGameOver)
         {
-            SceneManager.LoadScene(0);      // Current Game Scene ("Game" = 1)
+            SceneManager.LoadScene(0); 
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            SceneManager.LoadScene(0);      //FOO
             print("Quit!");
             Application.Quit();
         }

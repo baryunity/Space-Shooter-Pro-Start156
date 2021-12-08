@@ -10,10 +10,15 @@ public class GameManager : MonoBehaviour
     private bool _isGameOver = false;
     private UIManager _uiManager;
     private SpawnManager _spawnManager;
+    private bool oneShot = true;
 
     private void Start()
     {
-        print("2021 12 07 - 1515");
+        if (oneShot)
+        {
+            print("2021 12 07 - 1635");
+            oneShot = false; 
+        }
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         if (_uiManager == null)
             Debug.LogError("GameManager: UIManager is NULL");

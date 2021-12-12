@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     {
         if (oneShot)
         {
-            print("2021 12 07 - 1700");
+            print("2021 12 12 - 1300 - " + (isCoopMode ? "Coop Mode" : "Single Player Mode"));
             oneShot = false; 
         }
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();

@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     {
         if (oneShot)
         {
-            print("2021 12 07 - 1635");
+            print("2021 12 07 - 1700");
             oneShot = false; 
         }
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();

@@ -15,12 +15,14 @@ public class GameManager : MonoBehaviour
     private GameObject player;
     [SerializeField]
     private GameObject _coopPlayers;
+    [SerializeField]
+    private GameObject _pauseMenuPanel;
 
     private void Start()
     {
         if (oneShot)
         {
-            print("2021 12 12 - 1830 - " + (isCoopMode ? "Coop Mode" : "Single Player Mode"));
+            print("2021 12 12 - 1930 - " + (isCoopMode ? "Coop Mode" : "Single Player Mode"));
             oneShot = false; 
         }
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
@@ -68,6 +70,12 @@ public class GameManager : MonoBehaviour
                 ///_uiManager.HideTitleScreen();
                 _spawnManager.StartSpawning();
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            _pauseMenuPanel.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 

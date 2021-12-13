@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     {
         if (oneShot)
         {
-            print("2021 12 12 - 1930 - " + (isCoopMode ? "Coop Mode" : "Single Player Mode"));
+            print("2021 12 13 - 1300 - " + (isCoopMode ? "Coop Mode" : "Single Player Mode"));
             oneShot = false; 
         }
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();

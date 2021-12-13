@@ -11,12 +11,16 @@ public class GameManager : MonoBehaviour
     private UIManager _uiManager;
     private SpawnManager _spawnManager;
     private bool oneShot = true;
+    [SerializeField]
+    private GameObject player;
+    [SerializeField]
+    private GameObject _coopPlayers;
 
     private void Start()
     {
         if (oneShot)
         {
-            print("2021 12 12 - 1800 - " + (isCoopMode ? "Coop Mode" : "Single Player Mode"));
+            print("2021 12 12 - 1830 - " + (isCoopMode ? "Coop Mode" : "Single Player Mode"));
             oneShot = false; 
         }
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
@@ -42,17 +46,23 @@ public class GameManager : MonoBehaviour
             print("Quit!");
             Application.Quit();
         }
-        /// _spawnManager.StartSpawning();
+        // _spawnManager.StartSpawning();
 
         if (_isGameOver)
         {
             // Supposed to make space key restart new game in current mode
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                print("SPACE SPACE SPACE SPACE ==========");     ///FOO
+                print("SPACE SPACE SPACE SPACE ==========");     ///FOO 
                 if (! isCoopMode)
                 {
-                    ///Instantiate(player, Vector3.zero, Quaternion.identity);
+                    print("Instantiate Single Player =====");     ///FOO 
+                    Instantiate(player, Vector3.zero, Quaternion.identity);
+                }
+                else if (isCoopMode)
+                {
+                    print("Instantiate Coop Players =====");
+                    Instantiate(_coopPlayers, Vector3.zero, Quaternion.identity);
                 }
                 _isGameOver = false;
                 ///_uiManager.HideTitleScreen();

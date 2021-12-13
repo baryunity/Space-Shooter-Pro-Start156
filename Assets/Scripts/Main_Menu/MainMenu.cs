@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void LoadGame()      // Probably unused at this point
+    public void LoadGame()      // Probably unused at this point    //FOO
     {
         //print("LoadGame 1");
         SceneManager.LoadScene(1);      // Game Scene

@@ -604,6 +604,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9fe6f40efddf0b64fb68a3382b14a4db, type: 3}
   _gameOverText: {fileID: 1176629305}
   _restartText: {fileID: 1592489292}
+  _pauseMenuPanel: {fileID: 0}
 --- !u!1 &440256804
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,7 +769,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 462952235}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 277238014}
+        m_MethodName: ResumePlay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &462952235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1213,7 +1225,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1194824032}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 277238014}
+        m_MethodName: BackToMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1194824032
 MonoBehaviour:
   m_ObjectHideFlags: 0

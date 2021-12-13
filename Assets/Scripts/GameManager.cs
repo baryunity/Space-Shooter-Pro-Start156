@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     {
         if (oneShot)
         {
-            print("2021 12 13 - 1300 - " + (isCoopMode ? "Coop Mode" : "Single Player Mode"));
+            print("2021 12 13 - 1430 - " + (isCoopMode ? "Coop Mode" : "Single Player Mode"));
             oneShot = false; 
         }
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && _isGameOver)
+        if (Input.GetKeyDown(KeyCode.R) )   /// && _isGameOver)     //FOO
         {
             SceneManager.LoadScene(0); 
         }
@@ -87,6 +87,12 @@ public class GameManager : MonoBehaviour
     public bool getCoopMode()
     {
         return isCoopMode;
+    }
+
+    public void ResumeGame()
+    {
+        _pauseMenuPanel.SetActive(false);
+        Time.timeScale = 1f;
     }
 
 }

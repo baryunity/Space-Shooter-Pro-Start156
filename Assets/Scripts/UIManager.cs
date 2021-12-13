@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -15,7 +16,8 @@ public class UIManager : MonoBehaviour
     private Text _gameOverText;
     [SerializeField]
     private Text _restartText;
-
+    [SerializeField]
+    private GameObject _pauseMenuPanel;
     private GameManager _gameManager;
 
     // Start is called before the first frame update
@@ -63,6 +65,19 @@ public class UIManager : MonoBehaviour
             _gameOverText.text = "";
             yield return new WaitForSeconds(0.5f);
         }
+    }
+
+    public void ResumePlay() 
+    {
+        //GameManager gm = GameObject.Find("Game_Manager").GetComponent<GameManager>(); //FOO unneeded
+        _gameManager.ResumeGame();
+    }
+
+    public void BackToMainMenu()
+    {
+//      oneShot = true;
+//      GameOver();
+        SceneManager.LoadScene("Main_Menu");
     }
 
 }

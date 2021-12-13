@@ -77,7 +77,6 @@ public class Player : MonoBehaviour
         if (isPlayerOne)
         {
             CalculateMovement();
-
             if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
                 FireLaser();
         }
@@ -85,7 +84,7 @@ public class Player : MonoBehaviour
         if (isPlayerTwo)
         {
             PlayerTwoMovement();
-            if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
+            if (Input.GetKeyDown(KeyCode.KeypadEnter) && Time.time > _canFire)
                 FireLaser();
         }
     }
@@ -96,7 +95,6 @@ public class Player : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
         Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
-
         transform.Translate(_speed * Time.deltaTime * direction);
 
         // Constrain vertical motion
@@ -116,14 +114,22 @@ public class Player : MonoBehaviour
     
     void PlayerTwoMovement()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-
-        ///  3:38 seconds
-
-        Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
-
-        transform.Translate(_speed * Time.deltaTime * direction);
+        if (Input.GetKey(KeyCode.Keypad8))
+        {
+            transform.Translate(Vector3.up * _speed * Time.deltaTime);
+        }        
+        if (Input.GetKey(KeyCode.Keypad6))
+        {
+            transform.Translate(Vector3.right * _speed * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.Keypad2))
+        {
+            transform.Translate(Vector3.down * _speed * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.Keypad4))
+        {
+            transform.Translate(Vector3.left * _speed * Time.deltaTime);
+        }
 
         // Constrain vertical motion
         transform.position = new Vector3(transform.position.x,
@@ -153,20 +159,6 @@ public class Player : MonoBehaviour
         }
         _audioSource.Play();
     }    
-    
-    void FireLaserPlayerTwo()
-    {
-        _canFire = Time.time + _fireRate;
-        if (_isTripleShotActive)
-        {
-            Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
-        }
-        else
-        {
-            Instantiate(_laserPrefab, transform.position + new Vector3(0, 1.05f, 0), Quaternion.identity);
-        }
-        _audioSource.Play();
-    }
 
     public void Damage()
     {

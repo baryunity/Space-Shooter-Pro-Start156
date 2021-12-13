@@ -36,7 +36,8 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene(0);      //FOO
+            oneShot = true;
+            SceneManager.LoadScene(0);
             print("Quit!");
             Application.Quit();
         }

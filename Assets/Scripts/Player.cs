@@ -59,13 +59,9 @@ public class Player : MonoBehaviour
             Debug.LogError("The UI Manager is NULL");
 
         if (_audioSource == null)
-        {
             Debug.LogError("The Audio Source on the Player is NULL");
-        }
         else
-        {
             _audioSource.clip = _laserSoundClip;
-        }
 
         if (!_gameManager.isCoopMode) {
             transform.position = new Vector3(0, -1.85f, 0);

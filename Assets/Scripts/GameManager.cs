@@ -17,12 +17,13 @@ public class GameManager : MonoBehaviour
     private GameObject _coopPlayers;
     [SerializeField]
     private GameObject _pauseMenuPanel;
+    private Animator _pauseAnimator;
 
     private void Start()
     {
         if (oneShot)
         {
-            print("2021 12 13 - 1430 - " + (isCoopMode ? "Coop Mode" : "Single Player Mode"));
+            print("2021 12 13 - 1630 - " + (isCoopMode ? "Coop Mode" : "Single Player Mode"));
             oneShot = false; 
         }
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
@@ -31,6 +32,10 @@ public class GameManager : MonoBehaviour
         _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
         if (_spawnManager == null)
             Debug.LogError("GameManager: SpawnManager is NULL");
+        _pauseAnimator = GameObject.Find("Pause_Menu_Panel").GetComponent<Animator>();
+        if (_pauseAnimator == null)
+            Debug.LogError("GameManager: Pause Animator is NULL");
+        _pauseAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
     }
 
     private void Update()
@@ -75,6 +80,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             _pauseMenuPanel.SetActive(true);
+            _pauseAnimator.SetBool("isPaused", true);
             Time.timeScale = 0;
         }
     }

@@ -25,4 +25,10 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Co-Op_Mode");       // Co-Op Mode Game Scene (2)
     }
 
+    public void ResetBestScore()
+    {
+        PlayerPrefs.SetInt("HighScore", 0);
+        // Should do reset confirmation of some kind    // TODO
+    }
+
 }

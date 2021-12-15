@@ -27,7 +27,6 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        print("UIManager: Start()");        ///FOO
         _scoreText.text = "Score: " + 0;
         _bestScoreText.text = "Best: " + _bestScore;
         _gameOverText.gameObject.SetActive(false);
@@ -36,7 +35,6 @@ public class UIManager : MonoBehaviour
             Debug.LogError("GameManager is NULL");
         _bestScore = PlayerPrefs.GetInt("HighScore", -1);
         _bestScoreText.text = "Best: " + _bestScore;
-        print("UIManager. _bestScore = " + _bestScore);     ///FOO
     }
 
     public void UpdateScore(int playerScore)
